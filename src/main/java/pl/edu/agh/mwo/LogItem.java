@@ -12,6 +12,18 @@ public class LogItem {
 
     //Double duration;
 
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public String getStartDateTime() {
+        return startDateTime;
+    }
+
+    public String getStopDateTime() {
+        return stopDateTime;
+    }
+
     public void startTask() {
         this.startDateTime = startDateTime;
     }
