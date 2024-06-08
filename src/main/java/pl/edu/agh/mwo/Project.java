@@ -4,17 +4,17 @@ import java.util.List;
 
 public class Project {
 
-        String name;
+        private String name;
 
-        List<Task> tasks;
+        private List<LogItem> logItems;
 
-        public Project(String name, List<Task> tasks) {
+        public Project(String name, List<LogItem> logItems) {
             this.name = name;
-            this.tasks = tasks;
+            this.logItems = logItems;
         }
 
         public void showProject() {
-            String s = tasks.toString();
+            String s = logItems.toString();
             System.out.println(name + s);
         }
 
