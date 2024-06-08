@@ -11,6 +11,7 @@
 
 
 ## 🔗 Link
-[![GitHub Project](https://github.com/IzabellaAnn/TimePilot.git)
+[![GitHub Code](https://github.com/IzabellaAnn/TimePilot.git)]
 
+[![Project](https://github.com/users/IzabellaAnn/projects/4/views/1)]
 -------------------------------------------
