@@ -48,12 +48,12 @@ public class Raports {
     }
 
     void generate(){
-          for(Project project : model.getAllProjects()){
-              System.out.println("Nazwa projektu : " + project.name);
-                 for(LogItem logItem : project.getTasks()) {
-                     System.out.println("Nazwa Log itema: " + logItem.taskName + "\n" + "Data rorzpoczecia: " + logItem.startDateTime + "\n"+ "Data zakonczenia: " + logItem.stopDateTime);
-                 }
-          }
-         
+        for(Project project : model.getAllProjects()){
+            System.out.println("Nazwa projektu : " + project.name);
+            for(LogItem logItem : project.getTasks()) {
+                System.out.println("Nazwa Log itema: " + logItem.taskName + "\n" + "Data rorzpoczecia: " + logItem.startDateTime + "\n"+ "Data zakonczenia: " + logItem.stopDateTime);
+            }
+        }
+
     }
 }
