@@ -61,11 +61,10 @@ public class LogItem {
 
     @Override
     public String toString() {
-        return "LogItem{" +
-                "taskName='" + taskName + '\'' +
+        return  "taskName='" + taskName + '\'' +
                 ", startDateTime='" + startDateTime + '\'' +
-                ", stopDateTime='" + stopDateTime + '\'' +
-                '}';
+                ", stopDateTime='" + stopDateTime + '\''
+                ;
     }
 
     public String toCsv(){
