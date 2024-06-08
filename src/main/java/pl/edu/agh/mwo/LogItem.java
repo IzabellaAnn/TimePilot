@@ -29,6 +29,12 @@ public class LogItem {
         this.startDateTime = LocalDateTime.now().toString();
     }
 
+    public LogItem(String taskName, String startDateTime, String stopDateTime) {
+        this.taskName = taskName;
+        this.startDateTime = startDateTime;
+        this.stopDateTime = stopDateTime;
+    }
+
     public void setName(String name) {
         this.taskName = name;
     }
@@ -41,4 +47,16 @@ public class LogItem {
         this.stopDateTime = stopDateTime;
     }
 
+    @Override
+    public String toString() {
+        return "LogItem{" +
+                "taskName='" + taskName + '\'' +
+                ", startDateTime='" + startDateTime + '\'' +
+                ", stopDateTime='" + stopDateTime + '\'' +
+                '}';
+    }
+
+    public String toCsv(){
+        return taskName +"," +startDateTime+ "," + stopDateTime;
+    }
 }

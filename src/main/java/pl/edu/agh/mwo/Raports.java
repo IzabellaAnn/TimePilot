@@ -55,6 +55,7 @@ public class Raports {
     HashMap<LogItem, Double> timeWork = new HashMap<>();
 
     void generate(){
+
           for(Project project : model.getAllProjects()){
               System.out.println("Nazwa projektu : " + project.name);
                  for(LogItem logItem : project.getTasks()) {
@@ -77,3 +78,4 @@ public class Raports {
         return Duration.between(LocalDateTime.parse(start),LocalDateTime.parse(end));
     }
 }
+

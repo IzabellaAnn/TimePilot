@@ -1,27 +1,41 @@
 package pl.edu.agh.mwo;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
+    private String name;
+    private List<String> tasks; // List to store task names
 
-        String name;
-   // HashMap<Task, double> nameTask;
-        List<LogItem> logItem;
+    public Project(String name) {
+        this.name = name;
+        this.tasks = new ArrayList<>();
+    }
 
+    // Method to add a task to the project
+    public void addTask(String taskName) {
+        tasks.add(taskName);
+    }
 
-        public Project(String name, List<LogItem> logItem) {
-            this.name = name;
-            this.logItem = logItem;
+    // Method to display project information and list of tasks
+    public void showProject() {
+        System.out.println("Project Name: " + name);
+        for (String task : tasks) {
+            System.out.println("Task: " + task);
         }
+    }
 
-        public void showProject() {
-            String s = logItem.toString();
-            System.out.println(name + s);
-        }
+    // Getter method for tasks
+    public List<String> getTasks() {
+        return tasks;
+    }
 
-        public List<LogItem> getTasks() {
-            return logItem;
-        }
+    // Getter and setter for the project name
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

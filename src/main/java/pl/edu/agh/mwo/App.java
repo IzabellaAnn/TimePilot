@@ -1,29 +1,34 @@
 package pl.edu.agh.mwo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
-/**
- * Hello world!
- */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Scanner scanner = new Scanner(System.in);
+        Model model = new Model();
 
-//        List<Project> projectList = new ArrayList<>(new Project("Project", new LogItem("")));
-//
-//        Model model = new Model(projectList);
+        System.out.println("Welcome to the Time Pilot!");
 
-//        List<Project> listOfProjects = List.of(new Project(),
-//                                               new Project());
+        // Prompt for one project name
+        System.out.print("Enter the project name: ");
+        String projectName = scanner.nextLine();
+        Project project = new Project(projectName);
+        model.addProject(project);
+        System.out.println("Project '" + projectName + "' created.");
 
-//        Model model = new Model();
-//        //Model model = new Model("Project_2", "task_2");
-//        //Model model = new Model("Project_3", "task_3");
-//
-//model.
-//       Raport raport = new Raport();
+        // Prompt for one task name
+        System.out.print("Enter a task: ");
+        String taskName = scanner.nextLine();
+        project.addTask(taskName);
+        System.out.println("Task '" + taskName + "' added to project '" + projectName + "'.");
 
+        // Show the project and its tasks
+        System.out.println("\nProject Overview:");
+        project.showProject();
 
+        System.out.println("Thank you for using our Time Pilot!");
+
+        scanner.close();
     }
 }
+
