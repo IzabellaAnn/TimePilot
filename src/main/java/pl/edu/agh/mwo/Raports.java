@@ -19,19 +19,18 @@ public class Raports {
         LogItem logItems2 = new LogItem("Log2");
         LogItem logItems3 = new LogItem("Log3");
 
-        List<LogItem> logItemList = new ArrayList<>();
-        logItemList.add(logItems);
-        logItemList.add(logItems2);
-        logItemList.add(logItems3);
 
-        Project project = new Project("Project", logItemList);
 
-        List<LogItem> logItemList2 = new ArrayList<>();
-        logItemList2.add(logItems);
-        logItemList2.add(logItems2);
-        logItemList2.add(logItems3);
+        Project project = new Project("Project");
+        project.addTask(logItems.getTaskName());
+        project.addTask(logItems2.getTaskName());
+        project.addTask(logItems3.getTaskName());
 
-        Project project2 = new Project("Project2", logItemList);
+
+        Project project2 = new Project("Project2");
+        project2.addTask(logItems.getTaskName());
+        project2.addTask(logItems2.getTaskName());
+        project2.addTask(logItems3.getTaskName());
 
         List<Project> projectList = new ArrayList<>();
 
@@ -57,7 +56,7 @@ public class Raports {
     void generate(){
 
           for(Project project : model.getAllProjects()){
-              System.out.println("Nazwa projektu : " + project.name);
+              System.out.println("Nazwa projektu : " + project.getName());
                  for(LogItem logItem : project.getTasks()) {
 
                      System.out.println("Nazwa zadania: " + logItem.taskName + "\n" + "Data rorzpoczecia: " + logItem.startDateTime + "\n"+ "Data zakonczenia: " + "2024-06-09T14:47:58.010897475"); //logItem.stopDateTime
