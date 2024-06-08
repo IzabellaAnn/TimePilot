@@ -26,7 +26,7 @@ public class App {
         System.out.println("\nProject Overview:");
         project.showProject();
 
-        System.out.println("Thank you for using our Project Manager!");
+        System.out.println("Thank you for using our Time Pilot!");
 
         scanner.close();
     }
