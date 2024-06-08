@@ -29,7 +29,6 @@ public class App {
                 Project project = new Project(args[1]);
                 project.addTask(args[2]);
                 LogItem logItem = new LogItem(args[2]);
-               // model.addProject(project);
                 printWriter.saveEntry(project.getName(), logItem);
 
             }
@@ -40,13 +39,10 @@ public class App {
                 Map<String, List<LogItem>> projectsMap = csvReader.readFile();
 
                 List<LogItem> logItem = projectsMap.get(args[1]);
+                LogItem logItem1 = logItem.get(logItem.size()-1);
+                logItem1.setStopDateTime(LocalDateTime.now().toString());
+                printWriter.saveEntry(args[1], logItem1);
 
-                for(LogItem logItem2 : logItem){
-                    if(logItem2.getTaskName().equals(args[2])){
-                        logItem2.setStopDateTime(LocalDateTime.now().toString());
-                        printWriter.saveEntry(args[1], logItem2);
-                    }
-                }
             }
         }
         catch (ParseException exp) {
