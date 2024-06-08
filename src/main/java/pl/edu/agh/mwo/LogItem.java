@@ -2,13 +2,15 @@ package pl.edu.agh.mwo;
 
 import java.time.LocalDateTime;
 
-public class Task {
+public class LogItem {
 
-    String name;
+    String taskName;
 
     String startDateTime;
 
     String stopDateTime;
+
+    //Double duration;
 
     public void startTask() {
         this.startDateTime = startDateTime;
@@ -19,16 +21,16 @@ public class Task {
     }
 
     public String showTask() {
-        return (name + startDateTime + stopDateTime);
+        return (taskName + startDateTime + stopDateTime);
     }
 
-    public Task(String name) {
-        this.name = name;
+    public LogItem(String name) {
+        this.taskName = name;
         this.startDateTime = LocalDateTime.now().toString();
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.taskName = name;
     }
 
     public void setStartDateTime(String startDateTime) {

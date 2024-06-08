@@ -1,16 +1,16 @@
-package org.example;
+package pl.edu.agh.mwo;
 
 public class Raports {
 
-    org.example.Model model;
+    Model model;
 
 
-    public Raports(org.example.Model model) {
+    public Raports(Model model) {
         this.model = model;
     }
 
-    void getAll(){
+    void generate(){
 
-        model.listOfProject.showProject();
+         
     }
 }

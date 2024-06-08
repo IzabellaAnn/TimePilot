@@ -1,22 +1,23 @@
-package org.example;
+package pl.edu.agh.mwo;
 
 import java.security.AlgorithmConstraints;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Model {
-    List<Project> listOfProject = new ArrayList<>();
+    private List<Project> listOfProject = new ArrayList<>();
 
-    Project project;
+    private Project project;
 
-    Task task;
+    private LogItem logItem;
 
     public Model(List<Project> listOfProject) {
         this.listOfProject = listOfProject;
     }
 
-    public Model(Project project, Task task) {
+    public Model(Project project, LogItem logItem) {
         this.project = project;
-        this.task = task;
+        this.logItem = logItem;
         listOfProject.add(project);
     }
 
@@ -38,18 +39,19 @@ public class Model {
         this.project = project;
     }
 
-    public Task getTask() {
-        return task;
+    public LogItem getTask() {
+        return logItem;
     }
 
-    public void setTask(Task task) {
-        this.task = task;
+    public void setTask(LogItem logItem) {
+        this.logItem = logItem;
     }
 
-    getAllProjects(){
-        for(Project project : listOfProject){
-            listOfProject.show();
-        }
+    public List<Project> getAllProjects(){
+        return listOfProject;
+//        for(Project project : listOfProject){
+//            listOfProject.show();
+//        }
 
     }
 
