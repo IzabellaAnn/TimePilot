@@ -1,5 +1,7 @@
 package pl.edu.agh.mwo;
 
+import java.time.LocalDateTime;
+
 public class Task {
 
     String name;
@@ -18,6 +20,23 @@ public class Task {
 
     public String showTask() {
         return (name + startDateTime + stopDateTime);
+    }
+
+    public Task(String name) {
+        this.name = name;
+        this.startDateTime = LocalDateTime.now().toString();
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setStartDateTime(String startDateTime) {
+        this.startDateTime = startDateTime;
+    }
+
+    public void setStopDateTime(String stopDateTime) {
+        this.stopDateTime = stopDateTime;
     }
 
 }
