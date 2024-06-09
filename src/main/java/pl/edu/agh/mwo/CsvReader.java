@@ -28,9 +28,8 @@ public class CsvReader {
     public Map<String, List<LogItem>> readFile() {
 
         Map<String, List<LogItem>> projectsMap = new HashMap<>();
-        String filePath = "src/main/resources/projects.csv";
 
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(App.FILE_PATH))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
@@ -56,9 +55,9 @@ public class CsvReader {
     public String[] readLastRowOfFile() {
 
         Map<String, List<LogItem>> projectsMap = new HashMap<>();
-        String filePath = "src/main/resources/projects.csv";
+
         String[] values;
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(App.FILE_PATH))) {
             String line;
             String tempLine="";
 

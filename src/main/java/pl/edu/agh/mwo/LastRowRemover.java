@@ -6,7 +6,7 @@ import java.util.List;
 public class LastRowRemover {
 
     public static void RemoveLast() throws IOException {
-        RandomAccessFile f = new RandomAccessFile("src/main/resources/projects.csv", "rw");
+        RandomAccessFile f = new RandomAccessFile(App.FILE_PATH, "rw");
         long length = f.length() - 1;
         byte b;
         do {
