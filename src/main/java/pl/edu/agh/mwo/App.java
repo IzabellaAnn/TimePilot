@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main() {
         Options options = new Options();
         Option startOption = new Option("start", false, "activate start application");
         Option stopOption = new Option("stop", false, "activate stop application");

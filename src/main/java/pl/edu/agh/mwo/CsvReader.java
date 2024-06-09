@@ -8,23 +8,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CsvReader {
-    public static void main(String[] args) {
-        CsvReader csvReader = new CsvReader();
-        Map<String, List<LogItem>> logMap = csvReader.readFile();
-        System.out.println(toString(logMap));
-
-
-    }
-
-
-    private static String toString(Map<String, List<LogItem>> map) {
-            String mapAsString = map.keySet().stream()
-                    .map(key -> key + "=" + map.get(key))
-                    .collect(Collectors.joining(", ", "{", "}"));
-            return mapAsString;
-
-    }
-
     public Map<String, List<LogItem>> readFile() {
 
         Map<String, List<LogItem>> projectsMap = new HashMap<>();
