@@ -71,7 +71,7 @@ public class App {
                     String pName = projectName.get();
                     String tName = taskName.get();
                     LogItem logItem = projectsMap.get(pName).stream().filter(x -> x.taskName.equals(tName)).findAny().get();
-                    logItem.stopDateTime = LocalDateTime.now().toString();
+                    logItem.stopDateTime = LocalDateTime.now().format(DATE_TIME_FORMATTER);
                     LastRowRemover.RemoveLast();
                     PrintWriter.saveEntry(pName, logItem);
                 }
