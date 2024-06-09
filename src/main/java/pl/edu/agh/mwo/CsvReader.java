@@ -52,4 +52,26 @@ public class CsvReader {
         }
         return projectsMap;
     }
+
+    public String[] readLastRowOfFile() {
+
+        Map<String, List<LogItem>> projectsMap = new HashMap<>();
+        String filePath = "src/main/resources/projects.csv";
+        String[] values;
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            String tempLine="";
+
+            while ((line = br.readLine()) != null) {
+                tempLine=line;
+            }
+            values = tempLine.split(",");
+            ArrayList<String> lastLine = new ArrayList<>();
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return values;
+    }
 }
