@@ -46,7 +46,7 @@ public class App {
                 Project project = new Project(projectNameCmd);
              //   project.addTask(line.getOptionValue("t"), LocalDateTime.now().toString(), LocalDateTime.now().toString());
 
-                String timeNow = LocalDateTime.now().toString();
+                String timeNow = LocalDateTime.now().format(App.DATE_TIME_FORMATTER);
                 LogItem logItem = new LogItem(taskNameCmd, timeNow, timeNow);
                 String[] lastLine = csvReader.readLastRowOfFile();
                 if((!lastLine[0].equals(projectNameCmd) && !lastLine[1].equals(taskNameCmd) )|| !lastLine[2].equals(lastLine[3])){
@@ -66,7 +66,7 @@ public class App {
                     String pName = projectName.get();
                     String tName = taskName.get();
                     LogItem logItem = projectsMap.get(pName).stream().filter(x -> x.taskName.equals(tName)).findAny().get();
-                    logItem.stopDateTime = LocalDateTime.now().toString();
+                    logItem.stopDateTime = LocalDateTime.now().format(App.DATE_TIME_FORMATTER);
                     PrintWriter.saveEntry(pName, logItem);
                 }
             }
@@ -74,7 +74,7 @@ public class App {
             {
                 System.out.println(line.getOptionValue("project"));
                 Project project = new Project(line.getOptionValue("project"));
-                String timeNow = LocalDateTime.now().toString();
+                String timeNow = LocalDateTime.now().format(App.DATE_TIME_FORMATTER);
                 LogItem logItem = new LogItem(line.getOptionValue("task"), timeNow, timeNow);
                 PrintWriter.saveEntry(project.getName(), logItem);
 
