@@ -1,9 +1,15 @@
 package pl.edu.agh.mwo;
 import org.apache.commons.cli.*;
+
+
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
 
 public class App {
+
+    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+
     public static void main(String[] args) {
         Options options = new Options();
         Option startOption = new Option("start", false, "activate start application");
@@ -65,6 +71,7 @@ public class App {
                     String tName = taskName.get();
                     LogItem logItem = projectsMap.get(pName).stream().filter(x -> x.taskName.equals(tName)).findAny().get();
                     logItem.stopDateTime = LocalDateTime.now().toString();
+                    LastRowRemover.RemoveLast();
                     PrintWriter.saveEntry(pName, logItem);
                 }
             }
@@ -81,7 +88,12 @@ public class App {
         catch (ParseException exp) {
             // oops, something went wrong
             System.err.println("Parsing failed.  Reason: " + exp.getMessage());
+
             formatter.printHelp("App options in []", options, true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+
+
         }
     }
 }
