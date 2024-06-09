@@ -10,7 +10,7 @@ import java.util.*;
 public class App {
 
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-    public static final String FILE_PATH = "projects.csv";
+    public static final String FILE_PATH = "src/main/resources/projects.csv";
 
     public static void main(String[] args) {
         Options options = new Options();
@@ -56,7 +56,8 @@ public class App {
                 String timeNow = LocalDateTime.now().toString();
                 LogItem logItem = new LogItem(taskNameCmd, timeNow, timeNow);
                 String[] lastLine = csvReader.readLastRowOfFile();
-                if((!lastLine[0].equals(projectNameCmd) && !lastLine[1].equals(taskNameCmd) )|| !lastLine[2].equals(lastLine[3])){
+                if( !lastLine[2].equals(lastLine[3])){
+//                if((!lastLine[0].equals(projectNameCmd) && !lastLine[1].equals(taskNameCmd) )|| !lastLine[2].equals(lastLine[3])){
                 PrintWriter.saveEntry(project.getName(), logItem);}
 
             }
@@ -66,24 +67,36 @@ public class App {
                 CsvReader csvReader = new CsvReader();
                 Map<String, List<LogItem>> projectsMap = csvReader.readFile();
 
-                Optional<String> projectName = projectsMap.entrySet().stream().filter(x -> x.getValue().stream().anyMatch(y -> y.stopDateTime.equals(y.startDateTime))).findAny().map(x -> x.getKey());
-                Optional<String> taskName = projectsMap.entrySet().stream().filter(x -> x.getValue().stream().anyMatch(y -> y.stopDateTime.equals(y.startDateTime))).findAny().map(x -> x.getValue().get(0).taskName);
-                if (projectName.isPresent() && taskName.isPresent()) {
-                    String pName = projectName.get();
-                    String tName = taskName.get();
-                    LogItem logItem = projectsMap.get(pName).stream().filter(x -> x.taskName.equals(tName)).findAny().get();
-                    logItem.stopDateTime = LocalDateTime.now().format(DATE_TIME_FORMATTER);
+//                Optional<String> projectName = projectsMap.entrySet().stream().filter(x -> x.getValue().stream().anyMatch(y -> y.stopDateTime.equals(y.startDateTime))).findAny().map(x -> x.getKey());
+//                Optional<String> taskName = projectsMap.entrySet().stream().filter(x -> x.getValue().stream().anyMatch(y -> y.stopDateTime.equals(y.startDateTime))).findAny().map(x -> x.getValue().get(0).taskName);
+//                if (projectName.isPresent() && taskName.isPresent()) {
+//                    String pName = projectName.get();
+//                    String tName = taskName.get();
+                csvReader = new CsvReader();
+                String[] lastRow = csvReader.readLastRowOfFile();
+                String projectName = lastRow[0];
+                String taskName = lastRow[1];
+                String startTime = lastRow[2];
+                String timeNow = LocalDateTime.now().toString();
+                LogItem logItem = new LogItem( taskName, startTime, timeNow);
+
+//                    LogItem logItem = projectsMap.get(pName).stream().filter(x -> x.taskName.equals(tName)).findAny().get();
+//                    logItem.stopDateTime = LocalDateTime.now().format(DATE_TIME_FORMATTER);
+                if(startTime.equals(lastRow[3])){
                     LastRowRemover.RemoveLast();
-                    PrintWriter.saveEntry(pName, logItem);
-                }
+                    PrintWriter.saveEntry(projectName, logItem);}
+//                }
             }
             if(args[0].equals("continue"))
             {
-                System.out.println(line.getOptionValue("project"));
-                Project project = new Project(line.getOptionValue("project"));
+                CsvReader csvReader = new CsvReader();
+                String[] lastRow = csvReader.readLastRowOfFile();
+                String projectName = lastRow[0];
+                String taskName = lastRow[1];
                 String timeNow = LocalDateTime.now().toString();
-                LogItem logItem = new LogItem(line.getOptionValue("task"), timeNow, timeNow);
-                PrintWriter.saveEntry(project.getName(), logItem);
+                LogItem logItem = new LogItem( taskName, timeNow, timeNow);
+                if(!lastRow[2].equals(lastRow[3])){
+                PrintWriter.saveEntry(projectName, logItem);}
             }
         }
 
