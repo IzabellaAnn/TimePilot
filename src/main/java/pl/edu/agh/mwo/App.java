@@ -1,6 +1,4 @@
 package pl.edu.agh.mwo;
-
-
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +16,7 @@ public class App {
         Options options = new Options();
         options.addOption("start", true, "start application");
         options.addOption("stop", true, "stop application");
+        options.addOption("continue", true, "continue application");
         // create the parser
         CommandLineParser parser = new DefaultParser();
         try {
@@ -42,6 +41,15 @@ public class App {
                 LogItem logItem1 = logItem.get(logItem.size()-1);
                 logItem1.setStopDateTime(LocalDateTime.now().toString());
                 printWriter.saveEntry(args[1], logItem1);
+
+            }
+            if(line.hasOption("continue"))
+            {
+                PrintWriter printWriter = new PrintWriter();
+                Project project = new Project(args[1]);
+                project.addTask(args[2]);
+                LogItem logItem = new LogItem(args[2]);
+                printWriter.saveEntry(project.getName(), logItem);
 
             }
         }
