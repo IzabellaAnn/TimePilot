@@ -3,9 +3,12 @@ package pl.edu.agh.mwo;
 import org.apache.commons.cli.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class App {
+
+    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
     public static void main(String[] args) {
         Options options = new Options();
         Option startOption = new Option("start", false, "activate start application");

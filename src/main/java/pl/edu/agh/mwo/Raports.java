@@ -52,6 +52,36 @@ public class Raports {
 
     }
 
+    void generateFromTo(String from, String to){
+        CsvReader csvReader = new CsvReader();
+        Map<String, List<LogItem>> projectList = csvReader.readFile();
+
+        LocalDateTime dateFrom = LocalDateTime.parse(from, App.DATE_TIME_FORMATTER);
+        LocalDateTime dateTo = LocalDateTime.parse(from, App.DATE_TIME_FORMATTER);
+
+        for(String projectName : projectList.keySet()){
+            HashMap<LogItem, Duration> timeWork = new HashMap<>();
+            System.out.println("Nazwa projektu : " + projectName);
+            for(LogItem logItem : projectList.get(projectName)){
+                //Duration taskDuration = workTime(logItem.getStartDateTime(), logItem.getStopDateTime());
+                //timeWork.put(logItem, taskDuration);
+                LocalDateTime dateFromLogItem = LocalDateTime.parse(logItem.getStartDateTime(), App.DATE_TIME_FORMATTER);
+                LocalDateTime dateToLogItem = LocalDateTime.parse(logItem.getStopDateTime(), App.DATE_TIME_FORMATTER);
+                if (dateTo.isBefore(dateToLogItem) && dateFrom.isBefore(dateFromLogItem)) { //&& //dateFrom.isBefore(dateFromLogItem)
+
+                    System.out.print("Zadanie: "+ logItem +" ");
+                    //System.out.printf(" Duration: %02d:%02d:%02d%n", taskDuration.toHours(), taskDuration.toMinutesPart(), taskDuration.toSecondsPart());
+                } break;
+
+
+
+
+            }
+
+        }
+
+    }
+
     void generateFromFile(){
         CsvReader csvReader = new CsvReader();
         Map<String, List<LogItem>> projectList = csvReader.readFile();

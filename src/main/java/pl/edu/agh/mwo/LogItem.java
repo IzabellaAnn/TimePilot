@@ -38,13 +38,14 @@ public class LogItem {
 
     public LogItem(String name) {
         this.taskName = name;
-        this.startDateTime = LocalDateTime.now().toString();
+        //this.startDateTime = LocalDateTime.now().toString();
+        this.startDateTime = LocalDateTime.now().format(App.DATE_TIME_FORMATTER);
     }
 
     public LogItem(String taskName, String startDateTime, String stopDateTime) {
         this.taskName = taskName;
-        this.startDateTime = startDateTime;
-        this.stopDateTime = stopDateTime;
+        this.startDateTime = LocalDateTime.parse(startDateTime).format(App.DATE_TIME_FORMATTER);
+        this.stopDateTime = LocalDateTime.parse(stopDateTime).format(App.DATE_TIME_FORMATTER);
     }
 
     public void setName(String name) {
