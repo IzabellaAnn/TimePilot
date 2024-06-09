@@ -22,6 +22,10 @@ public class App {
             // parse the command line arguments
             CommandLine line = parser.parse(options, args);
             System.out.println(line.getOptionValue("p"));
+            if(args[0].equals("raport")){
+                Raports raports = new Raports();
+                raports.generateFromFile();
+            }
             if(args[0].equals("start"))
             {
                 System.out.println(line.getOptionValue("p"));

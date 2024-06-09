@@ -31,7 +31,8 @@ public class Raports {
         this.model = model;
     }
 
-
+    public Raports() {
+    }
 
     void generate(){
 
