@@ -38,7 +38,9 @@ public class LogItem {
 
     public LogItem(String name) {
         this.taskName = name;
-        this.startDateTime = LocalDateTime.now().toString();
+
+        //System.out.println(ldt.format(fmt));
+        this.startDateTime = LocalDateTime.now().format(App.DATE_TIME_FORMATTER);
     }
 
     public LogItem(String taskName, String startDateTime, String stopDateTime) {
