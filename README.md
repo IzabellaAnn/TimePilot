@@ -8,8 +8,8 @@
 - app Continue: Resume the time tracking for the most recently paused task.
 
 # More Functions
--app Report: Generate detailed reports that show time spent on various projects and tasks. This function helps users analyze their productivity and manage their time more efficiently.
--Help
+- app Report: Generate detailed reports that show time spent on various projects and tasks. This function helps users analyze their productivity and manage their time more efficiently.
+- Help
 
 ## Authors
 - Izabella Łecka
